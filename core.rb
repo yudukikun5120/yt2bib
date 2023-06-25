@@ -45,8 +45,8 @@ def get_metadata(identifier)
 end
 
 def covert_to_bib(metadata)
-  metadata.each do |data|
-    entry = <<~BIB
+  metadata.map do |data|
+    <<~BIB
       @video{#{data[:author_name]}:#{data[:name]},
         author = {#{data[:author_name]}},
         title = {#{data[:name]}},
@@ -54,6 +54,5 @@ def covert_to_bib(metadata)
         date = {#{data[:date_published]}}
       }
     BIB
-    puts entry
   end
 end
