@@ -19,39 +19,26 @@ rescue URI::InvalidURIError
   false
 end
 
-def solutions_to_metadata(solutions)
-  solutions.map do |solution|
-    {
-      name: solution.name.to_s,
-      url: solution.url.to_s,
-      author_name: solution.author_name.to_s,
-      date_published: solution.date_published.to_s
-    }
-  end
-end
-
-def get_metadata(identifier)
+def get_solutions(identifier)
   uri = "https://www.youtube.com/watch?v=#{identifier}"
   graph = RDF::Graph.load(uri, content_type: 'text/html')
-  solutions = RDF::Query.execute(graph) do
+  RDF::Query.execute(graph) do
     pattern [RDF::URI(uri), RDF::Vocab::SCHEMA.url, :url]
     pattern [RDF::URI(uri), RDF::Vocab::SCHEMA.name, :name]
     pattern [RDF::URI(uri), RDF::Vocab::SCHEMA.datePublished, :date_published]
     pattern [RDF::URI(uri), RDF::Vocab::SCHEMA.author, :author]
     pattern [:author, RDF::Vocab::SCHEMA.name, :author_name]
   end
-
-  solutions_to_metadata solutions
 end
 
-def covert_to_bib(metadata)
-  metadata.map do |data|
+def covert_to_bib(solutions)
+  solutions.map do |solution|
     <<~BIB
-      @video{#{data[:author_name]}:#{data[:name]},
-        author = {#{data[:author_name]}},
-        title = {#{data[:name]}},
-        url = {#{data[:url]}},
-        date = {#{data[:date_published]}}
+      @video{#{solution.author_name}:#{solution.name},
+        author = {#{solution.author_name}},
+        title = {#{solution.name}},
+        url = {#{solution.url}},
+        date = {#{solution.date_published}}
       }
     BIB
   end

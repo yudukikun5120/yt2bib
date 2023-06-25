@@ -30,8 +30,8 @@ class CLI < Thor
 
   def yt(argv_identifier)
     identifier = normalize_identifier(argv_identifier)
-    metadata = get_metadata(identifier)
-    puts covert_to_bib(metadata)
+    solutions = get_solutions(identifier)
+    puts covert_to_bib(solutions)
   end
 end
 
