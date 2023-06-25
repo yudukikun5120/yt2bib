@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'thor'
+require_relative 'core'
+
+class CLI < Thor
+  package_name 'yt2bib'
+  desc 'yt <video URL>', 'Convert a YouTube video to a BibTeX entry'
+  long_desc <<-LONGDESC
+    Convert a YouTube video to a BibTeX entry.
+
+    Example:
+
+    $ yt2bib yt https://www.youtube.com/watch?v=9bZkp7q19f0
+
+    @video{Psy:Gangnam Style,
+      author = {Psy},
+      title = {Gangnam Style},
+      url = {https://www.youtube.com/watch?v=9bZkp7q19f0},
+      date = {2012-07-15}
+    }
+  LONGDESC
+
+  default_command :yt2bib
+
+  def self.exit_on_failure?
+    true
+  end
+
+  def yt(argv_identifier)
+    identifier = normalize_identifier(argv_identifier)
+    metadata = get_metadata(identifier)
+    covert_to_bib(metadata)
+  end
+end
+
+CLI.start(ARGV)
