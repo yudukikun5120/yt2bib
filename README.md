@@ -2,6 +2,10 @@
 
 Cite YouTube videos in BibTeX format.
 
+> **Note**
+> You may need Biber/BibLaTeX for the `@movie` entry.
+> See the [BibLaTeX documentation](https://mirror.kumi.systems/ctan/macros/latex/contrib/biblatex/doc/biblatex.pdf) for more information.
+
 ## Usage
 
 ```bash
