@@ -2,10 +2,16 @@
 # frozen_string_literal: true
 
 require 'thor'
-require_relative 'core'
+require_relative 'solutions/core'
+require_relative 'solutions/soundcloud_solution'
 
 class CLI < Thor
   package_name 'yt2bib'
+
+  def self.exit_on_failure?
+    true
+  end
+
   desc 'yt <video URL>', 'Convert a YouTube video to a BibTeX entry'
   long_desc <<-LONGDESC
     Convert a YouTube video to a BibTeX entry.
@@ -24,14 +30,19 @@ class CLI < Thor
 
   default_command :yt2bib
 
-  def self.exit_on_failure?
-    true
-  end
+  map 'yt' => :youtube
+  map 'sc' => :soundcloud
 
-  def yt(argv_identifier)
+  def youtube(argv_identifier)
     identifier = normalize_identifier(argv_identifier)
     solutions = get_solutions(identifier)
-    puts covert_to_bib(solutions)
+    puts covert_yt_to_bib(solutions)
+  end
+
+  desc 'sc <soundcloud URL>', 'Convert a SoundCloud track to a BibTeX entry'
+  def soundcloud(argv_identifier)
+    solution = SoundcloudSolution.new(argv_identifier)
+    puts solution.to_bib
   end
 end
 

@@ -31,7 +31,7 @@ def get_solutions(identifier)
   end
 end
 
-def covert_to_bib(solutions)
+def covert_yt_to_bib(solutions)
   solutions.map do |solution|
     <<~BIB
       @video{#{solution.author_name}:#{solution.name},
