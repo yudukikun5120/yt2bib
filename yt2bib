@@ -4,6 +4,7 @@
 require 'thor'
 require_relative 'solutions/core'
 require_relative 'solutions/soundcloud_solution'
+require_relative 'solutions/bilibili_solution'
 
 class CLI < Thor
   package_name 'yt2bib'
@@ -32,6 +33,7 @@ class CLI < Thor
 
   map 'yt' => :youtube
   map 'sc' => :soundcloud
+  map 'bl' => :bilibili
 
   def youtube(argv_identifier)
     identifier = normalize_identifier(argv_identifier)
@@ -42,6 +44,12 @@ class CLI < Thor
   desc 'sc <soundcloud URL>', 'Convert a SoundCloud track to a BibTeX entry'
   def soundcloud(argv_identifier)
     solution = SoundcloudSolution.new(argv_identifier)
+    puts solution.to_bib
+  end
+
+  desc 'bl <bilibili URL>', 'Convert a Bilibili video to a BibTeX entry'
+  def bilibili(argv_identifier)
+    solution = BilibiliSolution.new(argv_identifier)
     puts solution.to_bib
   end
 end
