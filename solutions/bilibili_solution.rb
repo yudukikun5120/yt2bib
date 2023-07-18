@@ -42,8 +42,7 @@ class BilibiliSolution
         author = {#{author_name}},
         title = {#{name}},
         url = {#{url}},
-        year = {#{Date.parse(date_published).year}},
-        urldate = {#{Date.today}},
+        date = {#{DateTime.parse(date_published).strftime('%Y-%m-%d')}},
         entrysubtype = {work}
       }
     BIB
