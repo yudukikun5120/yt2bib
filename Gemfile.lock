@@ -1,0 +1,68 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (7.0.8)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    bcp47_spec (0.2.1)
+    concurrent-ruby (1.2.2)
+    haml (6.2.0)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    htmlentities (4.3.4)
+    i18n (1.14.1)
+      concurrent-ruby (~> 1.0)
+    link_header (0.0.8)
+    minitest (5.20.0)
+    nokogiri (1.15.4-x86_64-darwin)
+      racc (~> 1.4)
+    power_assert (2.0.3)
+    racc (1.7.1)
+    rdf (3.3.1)
+      bcp47_spec (~> 0.2)
+      link_header (~> 0.0, >= 0.0.8)
+    rdf-aggregate-repo (3.3.0)
+      rdf (~> 3.3)
+    rdf-microdata (3.3.0)
+      htmlentities (~> 4.3)
+      nokogiri (~> 1.15, >= 1.15.4)
+      rdf (~> 3.3)
+      rdf-rdfa (~> 3.3)
+      rdf-xsd (~> 3.3)
+    rdf-rdfa (3.3.0)
+      haml (~> 6.1)
+      htmlentities (~> 4.3)
+      rdf (~> 3.3)
+      rdf-aggregate-repo (~> 3.3)
+      rdf-vocab (~> 3.3)
+      rdf-xsd (~> 3.3)
+    rdf-vocab (3.3.0)
+      rdf (~> 3.3)
+    rdf-xsd (3.3.0)
+      rdf (~> 3.3)
+      rexml (~> 3.2)
+    rexml (3.2.6)
+    temple (0.10.2)
+    test-unit (3.6.1)
+      power_assert
+    thor (1.2.2)
+    tilt (2.3.0)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+
+PLATFORMS
+  x86_64-darwin-22
+
+DEPENDENCIES
+  activesupport (~> 7.0)
+  nokogiri (~> 1.15)
+  rdf-microdata (~> 3.3)
+  rdf-vocab (~> 3.3)
+  test-unit (~> 3.6)
+  thor (~> 1.2)
+
+BUNDLED WITH
+   2.4.19
