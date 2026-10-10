@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem "thor", "~> 1.2"
+gem "thor", "~> 1.5"
 
 gem "nokogiri", "~> 1.15"
 
