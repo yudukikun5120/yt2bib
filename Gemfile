@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem "thor", "~> 1.5"
 
-gem "nokogiri", "~> 1.15"
+gem "nokogiri", "~> 1.19"
 
 gem "activesupport", "~> 7.0"
 
