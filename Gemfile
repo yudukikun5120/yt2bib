@@ -11,4 +11,4 @@ gem "activesupport", "~> 7.0"
 gem "rdf-microdata", "~> 3.3"
 gem "rdf-vocab", "~> 3.3"
 
-gem "test-unit", "~> 3.6", :group => :test
+gem "test-unit", "~> 3.7", :group => :test
